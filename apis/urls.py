@@ -10,7 +10,7 @@ from .views import *
 router = routers.DefaultRouter()
 
 # define the router path and viewset to be used
-router.register(r'geeks', GeeksViewSet)
+# router.register(r'geeks', GeeksViewSet)
 router.register(r'keyvalue', KeyValueViewSet)
 
 # specify URL Path for rest_framework
