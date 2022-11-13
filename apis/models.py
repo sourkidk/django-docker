@@ -14,12 +14,16 @@ class Key(models.Model):
 
 class Dog(models.Model):
     original_json = models.CharField(max_length = 500, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to='static/')
     # original_json = JSONField()
     # file_url = models.CharField(max_length = 500)
 
 
     def __str__(self):
         return self.original_json
+
+
+
 
 
 

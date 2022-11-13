@@ -15,12 +15,10 @@ router.register(r'key', views.KeyViewSet)
 router.register(r'dog', views.DogViewSet)
 
 
+
 # specify URL Path for rest_framework
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('increment/<pk>', views.IncrementKeyViewSet.as_view(), name='update_key'),
-    # path('dog/', views.DogViewSet.as_view(), name='dog_view'),
-
-
 ]
