@@ -10,15 +10,17 @@ from .views import *
 router = routers.DefaultRouter()
 
 # define the router path and viewset to be used
-# router.register(r'key', KeyViewSet)
+
 router.register(r'key', views.KeyViewSet)
-# router.register(r'key', views.)
+router.register(r'dog', views.DogViewSet)
+
 
 # specify URL Path for rest_framework
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
-    # path('create/', views.CreateKeyViewSet.as_view(), name='create_key'),
-    # path('update/<pk>', views.UpdateKeyViewSet.as_view(), name='update_key'),
     path('increment/<pk>', views.IncrementKeyViewSet.as_view(), name='update_key'),
+    # path('dog/', views.DogViewSet.as_view(), name='dog_view'),
+
+
 ]
