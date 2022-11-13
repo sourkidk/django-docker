@@ -13,8 +13,8 @@ class Key(models.Model):
         return f'{self.key} : {self.value}'
 
 class Dog(models.Model):
-    # original_json = models.CharField(max_length = 500)
-    original_json = JSONField()
+    original_json = models.CharField(max_length = 500, blank=True)
+    # original_json = JSONField()
     # file_url = models.CharField(max_length = 500)
 
 

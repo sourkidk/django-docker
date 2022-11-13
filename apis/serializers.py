@@ -20,5 +20,6 @@ class DogSerializer(serializers.HyperlinkedModelSerializer):
         model = Dog
         # fields = ('original_json', 'file_url')
         fields = ('original_json',)
+        fields = ('original_json',)
 
 
