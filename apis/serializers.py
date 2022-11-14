@@ -19,7 +19,5 @@ class DogSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Dog
-        # fields = ('original_json', 'file_url')
-        fields = ('original_json', 'image')
-        # fields = ('original_json',)
+        fields = ('original_json', 'image', 'modified_image', 'metadata')
 

@@ -46,13 +46,14 @@ class DogViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
 
-        helper.download_images()
+        # helper.download_images()
 
-        file_name = f'test_image_file.jpg'
+        raw_json, file_name, mod_file_name, metadata = helper.download_images()
+        print(metadata)
 
         # with open(file_name, 'wb') as f:
         #     f.write(r.content)
-        serializer.save(original_json=file_name)
+        serializer.save(original_json=raw_json, image=file_name, modified_image=mod_file_name, metadata=metadata.__repr__())
 
 
 
