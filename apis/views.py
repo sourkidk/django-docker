@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
 import json
-from re import search
+
 
 from rest_framework import viewsets
-from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, GenericAPIView
+from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 from .serializers import KeySerializer, DogSerializer
 from .models import Key, Dog
@@ -46,11 +46,6 @@ class DogViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
 
-        # dog_api_call = requests.get('https://dog.ceo/api/breeds/image/random')
-        # image_url = dog_api_call.json().get("message")
-        # r = requests.get(image_url)
-        #
-        # print(search('breeds/', image_url))
         helper.download_images()
 
         file_name = f'test_image_file.jpg'

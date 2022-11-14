@@ -14,6 +14,9 @@ router = routers.DefaultRouter()
 router.register(r'key', views.KeyViewSet)
 router.register(r'dog', views.DogViewSet)
 
+# Couldn't get the router to work as expected, so took it out for now.
+# router.register(r'increment', views.IncrementKeyViewSet)
+
 
 
 # specify URL Path for rest_framework
