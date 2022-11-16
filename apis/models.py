@@ -18,8 +18,7 @@ class Dog(models.Model):
     modified_image = models.ImageField(null=True, blank=True, upload_to='static/')
     metadata = models.CharField(max_length=1000, null=True, blank=True)
 
-    # original_json = JSONField()
-    # file_url = models.CharField(max_length = 500)
+
 
 
     def __str__(self):

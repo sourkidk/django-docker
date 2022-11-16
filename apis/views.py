@@ -15,7 +15,7 @@ from dog_list import helper
 
 
 
-
+# Main Key viewset covers most CRUD functionality besides incrementing the value
 class KeyViewSet(viewsets.ModelViewSet):
     # define queryset
     queryset = Key.objects.all()
@@ -23,7 +23,7 @@ class KeyViewSet(viewsets.ModelViewSet):
     # specify serializer to be used
     serializer_class = KeySerializer
 
-
+# Added an additional view to accomodate the need to increment the values.
 class IncrementKeyViewSet(UpdateAPIView):
     # define queryset
     queryset = Key.objects.all()
@@ -37,6 +37,7 @@ class IncrementKeyViewSet(UpdateAPIView):
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
+
 class DogViewSet(viewsets.ModelViewSet):
     # define queryset
     queryset = Dog.objects.all()
@@ -46,10 +47,10 @@ class DogViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
 
-        # helper.download_images()
 
+        # Get an image from dog.ceo, save it, modify it and extract metadata.
         raw_json, file_name, mod_file_name, metadata = helper.download_images()
-        print(metadata)
+
 
         # with open(file_name, 'wb') as f:
         #     f.write(r.content)

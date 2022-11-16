@@ -18,18 +18,20 @@ def download_images():
         f.write(r.content)
 
     img = Image.open(file_name)
-    exifdata = img.getexif()
-    metadata = {}
-    for tag_id in exifdata:
-        # get the tag name, instead of human unreadable tag id
-        tag = TAGS.get(tag_id, tag_id)
-        data = exifdata.get(tag_id)
-        # decode bytes
-        if isinstance(data, bytes):
-            data = data.decode()
-        metadata[tag] = data
+
+    info_dict = {
+        "Filename": img.filename,
+        "Image Size": img.size,
+        "Image Height": img.height,
+        "Image Width": img.width,
+        "Image Format": img.format,
+        "Image Mode": img.mode
+    }
+
     mod_file_name = f'mod_{file_name}'
     img = img.convert('L')
     img.save(mod_file_name)
 
-    return data, file_name, mod_file_name, metadata
+
+
+    return data, file_name, mod_file_name, info_dict
