@@ -30,8 +30,11 @@ Instructions for use:
 
 10.  To use the dog API functionality, navigate to http://127.0.0.1:8000/key/dog/" or navigate back to the API root and then use
     the link to the 'dog' API.
-11.  Currently the 'POST' method only gets a single dog from orignal 'DOG-CEO' site.  Simply click 'POST' to download a random dog image from the site.
-12.  The 'GET' button will return all dog objects in their serialized format.  You can click the link on the 'image' or 'modified_image' fields for
-    any dog to view the image.  The original JSON data is also included as a dedicated field.
-13.
+11.  Currently the 'POST' method only gets a single dog from the original 'DOG-CEO' site.  Simply click 'POST' to download a random dog image from the site.
+12.  Each dog object has four fields(original_json, image, modified_image, and metadata).  Both image and modified_image contain the local urls for the saved images.
+13.  The 'GET' button will return all dog objects in their serialized format.  You can click the link on the 'image' or 'modified_image' fields for
+    any dog to view the image.  The original JSON data is also included as a dedicated field as is the metadata field.
+    Note: I previously had a functional method for parsing the exif metadata if it existed, but chose to go with the more consistent fields that are now
+    included as metadata.
+
 

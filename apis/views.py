@@ -1,8 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-import requests
-import json
-
 
 from rest_framework import viewsets
 from rest_framework.generics import UpdateAPIView
@@ -11,9 +6,6 @@ from .serializers import KeySerializer, DogSerializer
 from .models import Key, Dog
 from django.db.models import F
 from dog_list import helper
-
-
-
 
 # Main Key viewset covers most CRUD functionality besides incrementing the value
 class KeyViewSet(viewsets.ModelViewSet):
@@ -31,6 +23,7 @@ class IncrementKeyViewSet(UpdateAPIView):
     # specify serializer to be used
     serializer_class = KeySerializer
 
+    # Define patch functionality to increment value of a given key
     def patch(self, request, *args, **kwargs):
         instance = self.get_object()
         Key.objects.filter(pk=instance.key).update(value=F('value') + 1)
@@ -45,16 +38,14 @@ class DogViewSet(viewsets.ModelViewSet):
     # specify serializer to be used
     serializer_class = DogSerializer
 
+    # Override create for viewset
     def perform_create(self, serializer):
 
-
         # Get an image from dog.ceo, save it, modify it and extract metadata.
-        raw_json, file_name, mod_file_name, metadata = helper.download_images()
+        json_message, file_name, mod_file_name, metadata = helper.download_images()
 
-
-        # with open(file_name, 'wb') as f:
-        #     f.write(r.content)
-        serializer.save(original_json=raw_json, image=file_name, modified_image=mod_file_name, metadata=metadata)
+        # Populate database fields for each Dog image
+        serializer.save(original_json=json_message, image=file_name, modified_image=mod_file_name, metadata=metadata)
 
 
 
