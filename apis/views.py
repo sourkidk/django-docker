@@ -53,9 +53,7 @@ class DogViewSet(viewsets.ModelViewSet):
 
         # with open(file_name, 'wb') as f:
         #     f.write(r.content)
-        serializer.save(original_json=raw_json, image=file_name, modified_image=mod_file_name, metadata=metadata.__repr__())
-
-
+        serializer.save(original_json=raw_json, image=file_name, modified_image=mod_file_name, metadata=metadata)
 
 
 

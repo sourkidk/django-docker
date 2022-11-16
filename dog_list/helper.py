@@ -1,5 +1,5 @@
 import requests
-from PIL import Image, ImageEnhance
+from PIL import Image
 from PIL.ExifTags import TAGS
 
 
@@ -28,6 +28,7 @@ def download_images():
         if isinstance(data, bytes):
             data = data.decode()
         metadata[tag] = data
+        # print(metadata)
     mod_file_name = f'mod_{file_name}'
     img = img.convert('L')
     img.save(mod_file_name)
