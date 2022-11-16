@@ -16,7 +16,6 @@ class KeySerializer(serializers.HyperlinkedModelSerializer):
 
 class DogSerializer(serializers.HyperlinkedModelSerializer):
     # specify model and fields
-
     class Meta:
         model = Dog
         fields = ('original_json', 'image', 'modified_image', 'metadata')
